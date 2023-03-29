@@ -28,7 +28,6 @@ steamInstall="/home/$USER/.steam/"
 CEPrefix="/home/$USER/.wine"
 
 # Here's some flags you can tweak, although IIRC, ESync and FSync are required for Cheat Engine to function.
-proton=$2
 export WINEESYNC=1
 export WINEFSYNC=1
 export PROTON_FORCE_LARGE_ADDRESS_AWARE=1
@@ -68,18 +67,6 @@ function checkProcess()
             echo "Tried $TIMES_TRIED time."
         fi
 
-    fi
-}
-
-function checkIfGameRunning()
-{
-    if (( TIMES_TRIED < 5 )) # Checks if there's less than five tries.
-    then
-        checkProcess # Checks the process again.
-    else
-        echo "ERROR # 3: Game did not launch on time. Exiting." # Gives up, as something clearly went wrong.
-        sleep 3 # gives the batch script three seconds before returning the function.
-        return
     fi
 }
 
